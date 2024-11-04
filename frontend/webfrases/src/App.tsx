@@ -10,35 +10,43 @@ interface GeneratedText {
 function App() {
 
   const [phrase, setPhrase] = useState<GeneratedText[]>([])
-  const [nameDate, setNameDate] =useState('Natal');
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [nameDate, setNameDate] =useState<string>('');
+  const [activeButton, setActiveButton] = useState(null);
+  
 
     useEffect(() => {
-      // loadtxt();
-    }, []);
+      if (nameDate) {
+        loadtxt();
+      }
+    }, [nameDate]);
 
 
     async function loadtxt() {
       try {
-        const data = {
-          inputs: `Crie uma frase entre curta para a rede social comemorando ${nameDate}`,
-          parameters: { max_new_tokens: 50 },
-        };
+        if(nameDate){
 
-        const response = await fetch("http://localhost:3000/query", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+          
+          const data = {
+            inputs: `Crie uma frase entre curta para a rede social comemorando ${nameDate}`,
+            parameters: { max_new_tokens: 50 },
+          };
 
-      
-        const result = await response.json();
-        console.log(result); 
+          const response = await fetch("http://localhost:3000/query", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+
+        
+          const result = await response.json();
+          console.log(result); 
 
 
-        setPhrase(result)
+          setPhrase(result)
+
+        }
       } catch (error) {
         console.error("Erro", error); 
       }
@@ -54,27 +62,23 @@ function App() {
     return parts[1] ? parts[1].trim() : text;
   };
 
-  function handleCreate(){
-    loadtxt()
+  function handleCreate(name:string){
+    setNameDate(name);
+    // loadtxt()
   }
 
   function handleClean(){
     setPhrase([])
   }
 
-  function handleFilter(dataNome: string){
-    //  alert(dataNome)
+  
 
+  function handleFilter(idBtn:any, dataNome: string){
+     setActiveButton(idBtn);
      setNameDate(dataNome);
-     loadtxt()
+   
     
   }
-
-  const toggleDropdown = (month:any) => {
-    // Se o menu já estiver ativo, fechá-lo; caso contrário, abri-lo
-    setActiveDropdown(activeDropdown === month ? null : month);
-  };
-  
   
   return (
   
@@ -91,61 +95,90 @@ function App() {
 
      
     <main className='mainHome'>
-
-      <div className='filter'>
-         
-        <div className="dropdown">
-          <button className="dropbtn" onClick={() => toggleDropdown('Jan')}>
-           Jan
-          </button>
-          {activeDropdown === 'Jan' && (
-            <div className="dropdown-content">
-              <button onClick={()=>handleFilter('Ano Novo')}>Ano Novo</button>
-            </div>
-          )}
-        </div>
-        <div className="dropdown">
-          <button className="dropbtn" onClick={() => toggleDropdown('Feb')}>
-            Fev
-          </button>
-          {activeDropdown === 'Feb' && (
-            <div className="dropdown-content">
-              <button onClick={() => handleFilter('Volta as aulas')}>Volta as aulas</button>
-              <button onClick={() => handleFilter('Carnaval')}>Carnaval</button>
-            </div>
-          )}
-        </div>
-      </div>
-       
        <div className='phraseContainer'>
 
           <h1>Dia 31/out se comemora o Halloween!</h1>
 
-          <div className='txtPhrase'>
-              {phrase.length === 0 ? 
-                <div className='txtPhraseContainer'>
-                  <p>Clique abaixo para gerar uma frase para suas redes sociais!</p>
-                  <button onClick={handleCreate} className='btn create'>Gerar Frase</button>
-                </div>
-                
-                : <div className='txtPhraseContainer'>
-                    {phrase.map((item, index) => (
-                        <p key={index}>{cleanText(item.generated_text)}</p> 
-                    ))}
-                    
-                    <div className='btnPhraseContainer'>
-            
-                      <button onClick={handleClean}>Limpar</button>
-                    </div>
-                  </div> 
-              }
+          <div className='phraseContain'>
+
+                {/* <div className='filter'>
               
-          </div>
-       
+                    <div className="dropdown">
+                      <button className="dropbtn" onClick={() => toggleDropdown('Jan')}>
+                        Jan
+                      </button>
+                      {activeDropdown === 'Jan' && (
+                        <div className="dropdown-content">
+                          <button onClick={()=>handleFilter('Ano Novo')}>Ano Novo</button>
+                        </div>
+                      )}
+                    </div>
+                    <div className="dropdown">
+                      <button className="dropbtn" onClick={() => toggleDropdown('Feb')}>
+                        Fev
+                      </button>
+                      {activeDropdown === 'Feb' && (
+                        <div className="dropdown-content">
+                          <button onClick={() => handleFilter('Volta as aulas')}>Volta as aulas</button>
+                          <button onClick={() => handleFilter('Carnaval')}>Carnaval</button>
+                        </div>
+                      )}
+                    </div>
+                </div> */}
+
+
+                <div className='filter'>
+                
+                  <p><strong>Jan</strong></p>
+                  <div>
+                    <ul>
+                      
+                      
+                        <li><button  className={activeButton === 1 ? 'active' : ''} onClick={() => handleFilter(1, 'ANo Novo')}>Ano Novo</button></li>
+                    </ul>
+                  </div>
+                  
+
+                  <div>
+                    <p><strong>Fev</strong></p>
+                    <div>
+                      <ul>
+                      <li><button  className={activeButton === 2 ? 'active' : ''} onClick={() => handleFilter(2, 'Carnaval')}>Carnaval</button></li>
+
+                      </ul>
+                    </div>
+                  </div>
+                   
+
+                   
+              
+                   
+                </div>
           
-            
+                <div className='txtPhrase'>
+                    {phrase.length === 0 ? 
+                      <div className='txtPhraseContainer'>
+                        <p>Clique abaixo para gerar uma frase para suas redes sociais!</p>
+                        <button onClick={() => handleCreate('halloween')} className='btn create'>Gerar Frase</button>
+                      </div>
+                      
+                      : <div className='txtPhraseContainer'>
+                          {phrase.map((item, index) => (
+                              <p key={index}>{cleanText(item.generated_text)}</p> 
+                          ))}
+                          
+                          <div className='btnPhraseContainer'>
+                  
+                            <button onClick={handleClean}>Limpar</button>
+                          </div>
+                        </div> 
+                    }
+                    
+              </div>
+          </div>
+
          
-           
+       
 
        </div>
 

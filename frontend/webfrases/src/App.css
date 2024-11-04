@@ -9,7 +9,7 @@
 .container header{
   display: flex;
   align-items: center;
- 
+  justify-content: center;
 }
 
 .mainHome{
@@ -26,39 +26,26 @@
   border: 1px solid red;
 }
 
-.dropdown {
-  position: relative;
-  display: block;
+.filter p{
+  margin-bottom: 0px;
 }
 
-.dropbtn {
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  width: 100%; 
-  text-align: left;
-  border-bottom: 1px solid grey;
-  background: none;
+.filter ul{
+  list-style: none;
+  border: 1px solid red;
+  padding: 0px;
+  margin: 0px ;
 }
 
-.dropdown-content {
-  display: block;
-}
-
-.dropdown-content button {
-  color: black;
-  padding: 10px;
-  text-decoration: none;
-  display: block;
-  background: none;
-  border: none;
-  cursor: pointer;
+.filter ul button{
   width: 100%;
-  text-align: left;
+  text-align: start;
+  height: 40px;
+  cursor: pointer;
 }
 
-.dropdown-content button:hover {
-  background-color: #f1f1f1;
+.filter ul button.active{
+  color: red;
 }
 
 
@@ -73,9 +60,15 @@
   text-align: center;
 }
 
+.phraseContain{
+  display: flex;
+  gap: 10px;
+}
+
 .txtPhrase{
   border-radius: 10px;
   background: #fff;
+  width: 100%;
 }
 
 .btnPhraseContainer{
@@ -95,6 +88,11 @@
 .txtPhraseContainer p{
   text-align: center;
   font-size: 18px;
+}
+
+.monthFilter{
+  display: flex;
+  flex-direction: column;
 }
 
 .btn{
