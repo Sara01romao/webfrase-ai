@@ -3,7 +3,6 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  border: 1px solid red;
 }
 
 .container header{
@@ -23,16 +22,15 @@
   width: 100%;
   background: #fff;
   border-radius: 10px;
-  border: 1px solid red;
 }
 
 .filter p{
-  margin-bottom: 0px;
+  padding: 5px 10px;
+  margin: 0px;
 }
 
 .filter ul{
   list-style: none;
-  border: 1px solid red;
   padding: 0px;
   margin: 0px ;
 }
@@ -42,10 +40,20 @@
   text-align: start;
   height: 40px;
   cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+.filter ul button:hover{
+  background: #E5E5E5;
+ 
 }
 
 .filter ul button.active{
-  color: red;
+  background: #E5E5E5;
+  color: #FF6C47;
 }
 
 
