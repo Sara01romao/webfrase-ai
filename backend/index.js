@@ -8,7 +8,7 @@ app.use(cors({ origin: 'http://localhost:5173' }))
 
 app.use(express.json()); 
 
-app.post('/query', async (req, res) => {
+app.post('/phrasetxt', async (req, res) => {
   try {
     const data = req.body; 
    
