@@ -17,11 +17,31 @@
   gap: 50px;
 }
 
+.phraseContainer{
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.phraseContainer h1{
+  text-align: center;
+}
+
+.phraseContain{
+  display: flex;
+  gap: 10px;
+}
+
 .filter{
   max-width: 200px;
   width: 100%;
   background: #fff;
   border-radius: 10px;
+  padding: 10px;
+}
+
+.filter div{
+  border-bottom: 1px solid #ededed;
 }
 
 .filter p{
@@ -56,27 +76,22 @@
   color: #FF6C47;
 }
 
-
-.phraseContainer{
-  max-width: 800px;
-  margin: 0 auto;
+.resultTxtContainer{
   width: 100%;
-  border: 1px solid red;
 }
 
-.phraseContainer h1{
+.resultTxtContainer p{
   text-align: center;
-}
+  font-size: 14px;
 
-.phraseContain{
-  display: flex;
-  gap: 10px;
 }
 
 .txtPhrase{
   border-radius: 10px;
   background: #fff;
   width: 100%;
+  height: max-content;
+  position: relative;
 }
 
 .btnPhraseContainer{
@@ -120,5 +135,56 @@
   background: #FF6C47;
   margin: 0 auto;
 
+}
+
+.btn.btnCopy{
+  max-width: 100px;
+  background: #FF6C47;
+  gap: 5px;
+}
+
+.btn.btnClean{
+  max-width: 100px;
+  background: #000000;
+  gap: 5px;
+  color: #fff;
+}
+
+.loaderContainer{
+  background: rgb(255, 255, 255);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  height: 4px;
+  width: 130px;
+  --c:no-repeat linear-gradient(#6100ee 0 0);
+  background: var(--c),var(--c),#d7b8fc;
+  background-size: 60% 100%;
+  animation: l16 3s infinite;
+}
+
+.loader p{
+  text-align: center;
+  margin-top: 6px;
+}
+
+@keyframes l16 {
+  0%   {background-position:-150% 0,-150% 0}
+  66%  {background-position: 250% 0,-150% 0}
+  100% {background-position: 250% 0, 250% 0}
 }
