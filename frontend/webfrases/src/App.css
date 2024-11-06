@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 20px;
 }
 
 .mainHome{
@@ -27,17 +28,48 @@
   text-align: center;
 }
 
+.phraseContainer h1 span{
+  color: #FF6C47;
+}
+
 .phraseContain{
   display: flex;
   gap: 10px;
 }
 
-.filter{
+.filterContainer{
   max-width: 200px;
   width: 100%;
   background: #fff;
   border-radius: 10px;
   padding: 10px;
+}
+
+.filterHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+
+.btnCloseMobile{
+  height: 30px;
+  width: 30px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+}
+
+.btnCloseMobile:hover{
+  background: rgb(230, 230, 230);
+}
+
+.filter{
+  width: 100%; 
 }
 
 .filter div{
@@ -133,9 +165,7 @@
   font-size: 16px;
   height: 35px;
   cursor: pointer;
- 
- 
-  
+
 }
 
 .btn.btnClean:hover, .btn.btnCopy:hover {
@@ -154,8 +184,6 @@
 .btn.create{
   background: #FF6C47;
   margin: 20px auto;
-  
-
 }
 
 .btn.btnCopy{
@@ -174,12 +202,12 @@
 }
 
 .loaderContainer{
-  background: rgb(255, 255, 255);
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.97);
@@ -191,14 +219,14 @@
   
 }
 
-/* HTML: <div class="loader"></div> */
 .loader {
   height: 4px;
   width: 130px;
-  --c:no-repeat linear-gradient(#6100ee 0 0);
-  background: var(--c),var(--c),#d7b8fc;
+  --c:no-repeat linear-gradient(#FF6C47 0 0);
+  background: var(--c),var(--c),#fca691;
   background-size: 60% 100%;
   animation: l16 3s infinite;
+  margin-bottom: 50px;
 }
 
 .loader p{
@@ -211,3 +239,62 @@
   66%  {background-position: 250% 0,-150% 0}
   100% {background-position: 250% 0, 250% 0}
 }
+
+.btnOpenFilter{
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  transition: 0.3s ease-in;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  margin: 0px 0px 10px auto;
+  border:none;
+  font-size: 16px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .phraseContain{
+    flex-direction: column-reverse;
+  }
+
+  .filterContainer{
+    display: none;
+    height: 0;
+  }
+
+  .btnCloseMobile{
+    display: flex;
+  }
+
+  .filterContainer.visible {
+    max-width: 90%;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 999;
+    margin: 0 auto;
+    display: block;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    height: 96%;
+    transition: height 0.8s ease-in;
+  
+  }
+
+  .filter{
+    height: 90%;
+    overflow-y:scroll ;
+  }
+
+  .btnOpenFilter{
+    display: flex;
+  }
+  
+}
+
+
