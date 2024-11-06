@@ -92,14 +92,18 @@
   width: 100%;
   height: max-content;
   position: relative;
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btnPhraseContainer{
-  border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .txtPhraseContainer{
@@ -129,11 +133,28 @@
   font-size: 16px;
   height: 35px;
   cursor: pointer;
+ 
+ 
+  
+}
+
+.btn.btnClean:hover, .btn.btnCopy:hover {
+  filter: brightness(1.1);
+  transform: scale(1.1);
+  transition: all 0.3s;
+  
+}
+
+.btn.create:hover{
+  filter: brightness(1.1);
+  background: #ff9876;
+  
 }
 
 .btn.create{
   background: #FF6C47;
-  margin: 0 auto;
+  margin: 20px auto;
+  
 
 }
 
@@ -141,6 +162,7 @@
   max-width: 100px;
   background: #FF6C47;
   gap: 5px;
+  transition: all 0.3s;
 }
 
 .btn.btnClean{
@@ -148,6 +170,7 @@
   background: #000000;
   gap: 5px;
   color: #fff;
+  transition: all 0.3s;
 }
 
 .loaderContainer{
