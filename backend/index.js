@@ -14,7 +14,7 @@ app.post('/phrasetxt', async (req, res) => {
    
 
     const response = await fetch(
-      "https://api-inference.huggingface.co/models/mistralai/Mistral-Nemo-Instruct-2407",
+      "https://api-inference.huggingface.co/models/microsoft/Phi-3-mini-4k-instruct",
       {
         method: "POST",
         headers: {
