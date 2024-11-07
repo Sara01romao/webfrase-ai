@@ -10,7 +10,7 @@
 
 
 ## 💻  Sobre o Projeto  
-Este projeto é uma aplicação web para gerar frases para posts em datas comerciais e comemorativas, ajudando a simplificar a criação de conteúdo para redes sociais. A interface responsiva, onde o usuário pode selecionar diferentes categorias e datas específicas para receber frases personalizadas.
+Este projeto é uma aplicação web para gerar frases para posts em datas comerciais e comemorativas com Inteligência Artificial, ajudando a simplificar a criação de conteúdo para redes sociais. A interface responsiva, onde o usuário pode selecionar diferentes categorias e datas específicas para receber frases personalizadas.
 
 
 <br>
