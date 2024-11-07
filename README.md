@@ -21,8 +21,8 @@ Este projeto é uma aplicação web para gerar frases para posts em datas comerc
 
 Front-end 
 ```
-REACTJS
-TYPESCRIPT
+ReactJS
+Typescript
 ```
 Back-end 
 ```
